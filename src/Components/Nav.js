@@ -1,5 +1,5 @@
-import Note from "./note.jpg";
-import Singing from "./singing.jpg";
+import Note from "../note.jpg";
+import Singing from "../singing.jpg";
 
 export default function Nav({ setSong }) {
   function handleClick(event) {
