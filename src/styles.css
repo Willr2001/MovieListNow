@@ -6,6 +6,7 @@
   height: 100vh;
   grid-template-rows: 90px 120px 200px auto 90px;
   grid-template-columns: auto;
+  overflow-y: scroll;
 }
 
 body {
@@ -32,14 +33,42 @@ body {
   font-size: larger;
   font-weight: 700;
 }
+.Listmenu {
+  width: 200px;
+  height: calc(100vh - 50px);
+  background-color: lightslategray;
+  position: absolute;
+  top: 50px;
+  right: -250px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  transition: all 1s ease;
+}
+.Listmenu.active {
+  transform: translateX(-250px);
+}
 .info {
   font-size: large;
-  margin: 15px 15px 15px 15px;
+  margin: 15px 15px 15px 5vh;
   color: white;
+  text-align: left;
 }
-
+.navButton {
+  background-color: lightslategray;
+  color: white;
+  width: 80px;
+  align-self: center;
+  margin-top: 10px;
+  height: 30px;
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+}
 .Search {
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .movie {
@@ -62,6 +91,13 @@ body {
   margin-top: 15px;
   font-size: xx-large;
   font-weight: 700;
+}
+.imdb {
+  align-self: center;
+  margin-top: 15px;
+  color: yellow;
+  font-size: large;
+  font-weight: 500;
 }
 .intro {
   font-size: xx-large;

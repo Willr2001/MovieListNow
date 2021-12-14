@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import "./styles.css";
 import Info from "./Components/Info";
 import Pictures from "./Components/Pictures";
+import Nav from "./Components/Nav";
 import History from "./Components/History";
 import { SignIn, SignOut, useAuthentication } from "./Services/authService";
 import { db } from "./Services/Firebaseconfig";
@@ -58,7 +59,8 @@ export default function App() {
           {!user ? <SignIn /> : <SignOut clear={() => setMovie(null)} />}
         </div>
       </header>
-      <div class="Stitle">Enter A Movie Name Below!</div>
+      <History setMovie={setMovie} user={user} />
+      <Nav />
       <form class="Search" onSubmit={handleSearch}>
         <input type="text" placeholder="Movie Title" ref={movieSearchText} />
         <input type="submit" value="Search" />

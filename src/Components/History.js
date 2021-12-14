@@ -19,7 +19,7 @@ export default function History({ setMovie, user }) {
   });
 
   if (!movies) {
-    return <h1>Loading Data</h1>;
+    return <h1>No movies in your list!</h1>;
   }
 
   return (
