@@ -1,23 +1,23 @@
-import Note from "../note.jpg";
-import Singing from "../singing.jpg";
+import Search from "../Magnifying-Glass.png";
+import Movie from "../Movie-Night.jpg";
 
 export default function Pictures() {
   return (
-    <div id="pictures">
+    <div class="pictures">
       <img
         id="left"
-        src={Note}
-        alt="music note"
-        width="60"
-        height="60"
+        src={Search}
+        alt="Magnifying Glass"
+        width="150"
+        height="150"
         hspace="20%"
       />
       <img
         id="right"
-        src={Singing}
-        alt="singing"
-        width="100"
-        height="60"
+        src={Movie}
+        alt="Movie Image"
+        width="220"
+        height="150"
         hspace="20%"
       />
     </div>

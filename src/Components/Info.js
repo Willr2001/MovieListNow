@@ -1,7 +1,15 @@
 export default function Info({ movie }) {
   if (movie) {
-      return <div>{JSON.stringify(movie)}</div>; // Style this nicer
+    return (
+      <div class="movieLoad">
+        <img class="poster" src={movie.Poster} alt="Movie Poster"></img>
+        <div class="movie">
+          <div class="Mtitle">{movie.Title}</div>
+          <div class="info"></div>
+        </div>
+      </div>
+    );
   } else {
-      return <div>Search a movie or select on of your past searches</div>;
+    return <div class="intro">Search a movie or view your movie list</div>;
   }
 }

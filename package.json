@@ -1,5 +1,5 @@
 {
-  "name": "api-hw2",
+  "name": "Movie-List-Now",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -15,7 +15,7 @@
     "typescript": "3.3.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
