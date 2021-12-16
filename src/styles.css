@@ -55,6 +55,16 @@ body {
   color: white;
   text-align: left;
 }
+.movieHC {
+  background-color: lightslategrey;
+  width: 50vh;
+  align-self: center;
+  color: white;
+}
+.movieHist {
+  font-weight: 700;
+  padding: 5px;
+}
 .navButton {
   background-color: lightslategray;
   color: white;
@@ -62,6 +72,11 @@ body {
   align-self: center;
   margin-top: 10px;
   height: 30px;
+}
+.topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 .nav {
   display: flex;

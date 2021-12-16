@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./styles.css";
-import Info from "./Components/Info";
+import Info, { deleteMovie } from "./Components/Info";
 import Pictures from "./Components/Pictures";
 import Nav from "./Components/Nav";
 import History from "./Components/History";
@@ -26,11 +26,27 @@ export default function App() {
         setMovie(data);
         const payload = {
           email: user.email,
-          movie: data,
+          movie: {
+            Poster: data.Poster,
+            Title: data.Title,
+            Year: data.Year,
+            IMDBRating: data.imdbRating,
+            Director: data.Director,
+            Actors: data.Actors,
+            Genre: data.Genre,
+            Rated: data.Rated,
+            Runtime: data.Runtime,
+            Plot: data.Plot,
+          },
         };
-        addDoc(collection(db, "Movie search"), payload);
       });
   };
+  function removeMovie(id) {
+    deleteMovie(id).then(() => {
+      setMovie(null);
+      setMovies(movies.filter((a) => a.id !== id));
+    });
+  }
 
   if (!user) {
     return (
@@ -59,13 +75,12 @@ export default function App() {
           {!user ? <SignIn /> : <SignOut clear={() => setMovie(null)} />}
         </div>
       </header>
-      <History setMovie={setMovie} user={user} />
-      <Nav />
+      <Nav user={user} setMovie={setMovie} />
       <form class="Search" onSubmit={handleSearch}>
         <input type="text" placeholder="Movie Title" ref={movieSearchText} />
         <input type="submit" value="Search" />
       </form>
-      <Info movie={movie} />
+      <Info remover={removeMovie} movie={movie} user={user} />
     </div>
   );
 }

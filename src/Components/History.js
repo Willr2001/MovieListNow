@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { db } from "../Services/Firebaseconfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
-export default function History({ setMovie, user }) {
+export default function History({ setMovie, user, showing }) {
   const [movies, setMovies] = useState(null);
 
   const q = query(
@@ -10,27 +10,32 @@ export default function History({ setMovie, user }) {
     where("email", "==", user.email)
   );
 
-  getDocs(q).then((data) => {
-    const returnedMovies = [];
-    data.forEach((doc) => {
-      returnedMovies.push(doc.data().movie);
+  useEffect(() => {
+    getDocs(q).then((data) => {
+      const returnedMovies = [];
+      data.forEach((doc) => {
+        returnedMovies.push(doc.data().movie);
+      });
+      setMovies(returnedMovies);
+      console.log(movies);
     });
-    setMovies(returnedMovies);
-  });
+  }, [movies]);
 
   if (!movies) {
     return <h1>No movies in your list!</h1>;
   }
 
-  return (
+  return showing ? (
     <React.Fragment>
-      <ul>
+      <div class="movieHC">
         {movies.map((m) => (
-          <li key={m.imdbID} onClick={(e) => setMovie(m)}>
+          <div class="movieHist" key={m.imdbID} onClick={(e) => setMovie(m)}>
             {m.Title}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </React.Fragment>
+  ) : (
+    ""
   );
 }
